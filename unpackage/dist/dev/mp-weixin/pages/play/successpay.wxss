@@ -48,7 +48,8 @@
   color: #333333;
   height: 80rpx;
   line-height: 80rpx;
-  border-radius: 50rpx;
+  -webkit-border-radius: 50rpx;
+          border-radius: 50rpx;
   width: 446rpx;
   background: white;
   text-align: center;

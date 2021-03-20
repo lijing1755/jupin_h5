@@ -42,8 +42,10 @@
 .wechatcontent .peopledata.data-v-63613080 {
   width: 700rpx;
   background: #31313B;
-  box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
-  border-radius: 10rpx;
+  -webkit-box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
+          box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   margin: 0 auto;
   font-size: 28rpx;
   padding: 20rpx 0;
@@ -69,8 +71,10 @@
 .wechatcontent .bottomtent.data-v-63613080 {
   width: 700rpx;
   background: #31313B;
-  box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
-  border-radius: 10rpx;
+  -webkit-box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
+          box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   margin: 30rpx auto;
   padding: 20rpx 0;
 }
@@ -115,6 +119,7 @@
   background: #FFFFFF;
   text-align: center;
   opacity: 1;
-  border-radius: 40rpx;
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
 }
 

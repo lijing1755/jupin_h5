@@ -1,15 +1,38 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/play/successpay",
-    "pages/play/weChatpay"
+    "pages/account/registered/registered",
+    "pages/account/success/success",
+    "pages/account/registered/quil/quil",
+    "pages/play/weChatpay",
+    "pages/play/successpay"
   ],
   "subPackages": [],
   "window": {
+    "navigationStyle": "custom",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#1A1622",
+    "navigationBarTitleText": "巨拼注册",
+    "navigationBarBackgroundColor": "#007AFF",
     "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#C7D0E2",
+    "selectedColor": "#498AB0",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/tabbar/index/index",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabbar/center/index",
+        "iconPath": "static/tabbar/center.png",
+        "selectedIconPath": "static/tabbar/center_on.png",
+        "text": "我的"
+      }
+    ]
   },
   "usingComponents": {}
 }

@@ -1,28 +1,63 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
+		  "path": "pages/account/registered/registered",
+		  "style": {
+		    "navigationBarTitleText": "注册"
+		  }
+		}
+	    ,{
+            "path" : "pages/account/success/success",
+            "style" : {
+				"navigationBarTitleText": "注册成功"
 			}
-		},
-    {
-			"path": "pages/play/successpay",
-			"style": {
-				"navigationBarTitleText": "支付成功"
+        }
+        ,{
+            "path" : "pages/account/registered/quil/quil",
+            "style" : {
+				"navigationBarTitleText": "用户协议"
 			}
-		},
-    {
-			"path": "pages/play/weChatpay",
-			"style": {
+        },
+		{
+		    "path" : "pages/play/weChatpay",
+		    "style" : {
 				"navigationBarTitleText": "支付"
 			}
+		},
+		{
+		    "path" : "pages/play/successpay",
+		    "style" : {
+				"navigationBarTitleText": "支付成功"
+			}
 		}
-	],
+    ],
+	"tabBar": {
+		"color": "#C7D0E2",
+		"selectedColor": "#498AB0",
+		"borderStyle": "white",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/tabbar/index/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home_on.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabbar/center/index",
+				"iconPath": "static/tabbar/center.png",
+				"selectedIconPath": "static/tabbar/center_on.png",
+				"text": "我的"
+			}
+		]
+	},
 	"globalStyle": {
-		"navigationBarTextStyle": "#ffffff",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#1A1622",
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "巨拼注册",
+		"navigationBarBackgroundColor": "#007AFF",
 		"backgroundColor": "#FFFFFF"
-	}
+	},
+	 "easycom": {
+	        "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	    }
 }

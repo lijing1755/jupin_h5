@@ -1,7 +1,7 @@
 <template>
 	<view class="paycontent">
 		<view class="imgview">
-      <image class="logo" src="/static/okpic.png"></image>
+      <image class="logo" src="/static/image/okpic.png"></image>
     </view>
 		<view class="text-area">
 			<text class="title">支付成功</text>

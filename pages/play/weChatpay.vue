@@ -1,7 +1,7 @@
 <template>
 	<view class="wechatcontent">
 		<view class="imgview">
-      <image class="logo" src="/static/jupinlogo.png"></image>
+      <image class="logo" src="/static/image/jupinlogo.png"></image>
     </view>
     <view class="peopledata">
       <view>
