@@ -97,9 +97,9 @@
       box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
       border-radius: 10rpx;
       margin: 30rpx auto;
+      padding: 20rpx 0;
       &>view{
-        display: flex;
-        padding: 20rpx 0;
+        display: flex;        
         margin-left: 20rpx;
         margin-right: 20rpx;
         margin-bottom: 20rpx;
