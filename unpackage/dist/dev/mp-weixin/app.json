@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/play/successpay",
+    "pages/play/weChatpay"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#1A1622",
+    "backgroundColor": "#FFFFFF"
+  },
+  "usingComponents": {}
+}

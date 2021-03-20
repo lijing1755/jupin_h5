@@ -1,0 +1,39 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "",
+  "appid": "touristappid",
+  "projectname": "jupin_h5",
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/play/successpay",
+          "pathName": "pages/play/successpay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/play/weChatpay",
+          "pathName": "pages/play/weChatpay",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

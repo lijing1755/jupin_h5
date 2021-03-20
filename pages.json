@@ -5,12 +5,24 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+    {
+			"path": "pages/play/successpay",
+			"style": {
+				"navigationBarTitleText": "支付成功"
+			}
+		},
+    {
+			"path": "pages/play/weChatpay",
+			"style": {
+				"navigationBarTitleText": "支付"
+			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "#ffffff",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#1A1622",
+		"backgroundColor": "#FFFFFF"
 	}
 }
