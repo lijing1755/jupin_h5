@@ -6,24 +6,36 @@
 		<view class="text-area">
 			<text class="title">支付成功</text>
 		</view>
-    <view class="backview">
+		<!-- 内置浏览器返回方式 -->
+    <!-- <view class="backview" @click="backApp">
       <text>返回巨拼APP</text>
-    </view>
+    </view> -->
+	<!-- 外部浏览器返回方式 -->
+	<view class="backview" >
+	  <a href='jupin://pages/goods/pages/confirm-order/submit-success?price=999'>返回巨拼APP</a>
+	</view>
 	</view>
 </template>
 
 <script>
+	import uniData from '@/components/uni.webview.1.5.2.js'
 	export default {
 		data() {
 			return {
 				title: 'successpay'
 			}
 		},
-		onLoad() {
-
+		onLoad(option) {
+			console.log(JSON.stringify(option.option))
 		},
 		methods: {
-
+			backApp(){
+				console.log('触发返回')
+				// uni.webView.redirectTo({
+				// 	url:'/pages/goods/pages/confirm-order/submit-success'
+				// })
+				
+			}
 		}
 	}
 </script>
@@ -57,6 +69,10 @@
       background: white;
       text-align: center;
       margin: 30% auto 0;
+	  a{
+		  color: #000000;
+		  text-decoration:none;
+	  }
     }
   }
 </style>

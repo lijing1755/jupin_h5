@@ -29,26 +29,62 @@
       </view>
     </view>
     <view class="waitpay">待付费15:00</view>
-    <view class="moneypay" @click="okclick">微信支付 ( $180:00 )</view>
+    <view class="moneypay" @click="okclick()">微信支付 ( $180:00 )</view>
+	
 	</view>
 </template>
 
 <script>
+	import {
+		weixinPay,
+		sendPhoneCode
+	} from '@/common/vmeitime-http/pay.js' 
 	export default {
 		data() {
 			return {
-				title: 'wechatpay'
+				title: 'wechatpay',
+				url:''
 			}
 		},
-		onLoad() {
+		onLoad(option) {
+			
 
+			this.$store.commit('SET_TOKEN', decodeURI(option.token))
+			let data = JSON.parse(decodeURI(option.option))
+			data.client_type='wx_h5'
+			let that = this
+			weixinPay(data).then(res => {
+			  console.log(JSON.stringify(res))
+				let temp = JSON.parse(res.data.jsApiParameters)
+				// alert('打印路径')
+				// alert(temp.mweb_url)
+				
+				that.url=temp.mweb_url
+				// alert(that.url)
+				// location.href=that.url
+			}).catch((err) => {
+				console.log(JSON.stringify(err))
+				// this.submitting = false
+			})
+			// let that = this
+			// sendPhoneCode().then(res =>{
+			// 	console.log(res.mWebUrl)
+			// 	that.url=res.mWebUrl
+			// }).catch(err =>{
+			// 	console.log(err)
+			// })
 		},
 		methods: {
-      okclick(){
-        uni.navigateTo({
-          url: `/pages/play/successpay`
-        });
-      }
+			okclick(){
+				
+				
+				  
+				  
+				  location.href=this.url
+				// uni.navigateTo({
+				//   url: `/pages/play/successpay`
+				// });
+			}
 		}
 	}
 </script>

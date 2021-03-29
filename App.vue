@@ -1,7 +1,19 @@
 <script>
+import {
+	mapGetters,
+	mapActions
+} from 'vuex';
+import store from '@/store/index.js'
 export default {
-	onLaunch: function() {
-    console.log('App Launch');
+	onLaunch: function(option) {	
+		// console.log(option)
+		// let temp = JSON.stringify(option.query)
+		// let token = JSON.parse(temp).token
+		// alert(token)
+		// this.$store.commit('SET_TOKEN', JSON.parse(temp).token)
+		
+	 
+		console.log('App Launch');
     // if(uni.getStorageSync('token')) {
     //   this.$store.dispatch("getMerchantInfo",{});
     // }
