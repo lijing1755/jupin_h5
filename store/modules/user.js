@@ -4,7 +4,9 @@ import {
 const user = {
   state: {
     merchantInfo: uni.getStorageSync('merchantInfo') || {},//默认为0
-    token: uni.getStorageSync('token') || null
+    token: uni.getStorageSync('token') || null,
+	type:0,
+	order:uni.getStorageSync('order') || null
   },
 
   mutations: {
@@ -15,7 +17,15 @@ const user = {
     SET_TOKEN: (state, token) => {
       uni.setStorageSync('token', token)
       state.token = token
-    }
+    },
+	SET_TYPE: (state, type) => {
+	  uni.setStorageSync('type', type)
+	  state.type = type
+	},
+	SET_ORDER: (state, order) => {
+	  uni.setStorageSync('order', order)
+	  state.order = order
+	},
   },
 
   actions: {

@@ -5,31 +5,32 @@
     </view>
     <view class="peopledata">
       <view>
-        <view>收货人: 张xx</view>
-        <view>13013013013</view>
+        <view>收货人: {{order.trade.username}}</view>
+        <view>{{order.trade.tel}}</view>
       </view>
-      <view>广东省 广州市 花都区 红姑写字楼</view>
+      <view>{{order.trade.region}} {{order.trade.address}}</view>
     </view>
     <view class="bottomtent">
       <view>
         <view>商品总计</view>
-        <view>￥3013</view>
+        <view>￥{{order.trade.goods_price}}</view>
       </view>
       <view>
         <view>运费</view>
-        <view>￥3013</view>
+        <view>￥{{order.trade.shipping_price}}</view>
       </view>
       <view>
         <view>余额</view>
-        <view>￥3013</view>
+        <view>￥{{order.trade.user_balance_fee}}</view>
       </view>
       <view>
         <view>总计</view>
-        <view>￥3013</view>
+        <view>￥{{order.trade.total_amount}}</view>
       </view>
     </view>
-    <view class="waitpay">待付费15:00</view>
-    <view class="moneypay" @click="okclick()">微信支付 ( $180:00 )</view>
+    <view class="waitpay">待付费<u-count-down @end="end" timestamp="240" :show-hours="false" bg-color="#1A1622"
+					 color="#FF7403" font-size="30rpx" separator-color="#FF7403" separator-size="24rpx"></u-count-down></view>
+    <view class="moneypay" :class="[showpay?'notallowpay':'allowpay']" @click="okclick()">微信支付 ( ${{order.trade.order_amount}} )</view>
 	
 	</view>
 </template>
@@ -37,49 +38,66 @@
 <script>
 	import {
 		weixinPay,
-		sendPhoneCode
+		getTradeOrderDetails
 	} from '@/common/vmeitime-http/pay.js' 
+	import store from '@/store/index.js'
 	export default {
 		data() {
 			return {
 				title: 'wechatpay',
-				url:''
+				url:'',
+				order_id:0,
+				showpay:false,//订单是否已经支付
+				order:{},
+				hour:null,
+				money:null
+				
 			}
+		},
+		created(){
+			
 		},
 		onLoad(option) {
 			
-
-			this.$store.commit('SET_TOKEN', decodeURI(option.token))
-			let data = JSON.parse(decodeURI(option.option))
-			data.client_type='wx_h5'
-			let that = this
-			weixinPay(data).then(res => {
-			  console.log(JSON.stringify(res))
-				let temp = JSON.parse(res.data.jsApiParameters)
-				// alert('打印路径')
-				// alert(temp.mweb_url)
-				
-				that.url=temp.mweb_url
-				// alert(that.url)
-				// location.href=that.url
-			}).catch((err) => {
-				console.log(JSON.stringify(err))
-				// this.submitting = false
-			})
+			console.log('token')
+			console.log(option)
+			console.log(option.type)
+			let url = decodeURI(option.option+'&package='+option.package+'&redirect_url='+option.redirect_url)
+			this.order_id = option.orderId
+			this.$store.commit('SET_TYPE',option.type)
+			this.$store.commit('SET_TOKEN', option.token)
+			this.hour = option.hour
+			this.money = option.money
+			
+			this.url = url
+			
 			// let that = this
-			// sendPhoneCode().then(res =>{
-			// 	console.log(res.mWebUrl)
-			// 	that.url=res.mWebUrl
-			// }).catch(err =>{
-			// 	console.log(err)
-			// })
+			this.getOrderDetail()
+			
 		},
+		
 		methods: {
+			
+			getOrderDetail(){
+				let that = this
+				getTradeOrderDetails({
+					order_id:that.order_id
+				}).then(res => {
+				  console.log(res)
+					that.order = res.data
+					that.order.money = that.money
+					that.order.hour = that.hour
+					this.$store.commit('SET_ORDER', that.order)
+					console.log(that.order)
+				}).catch((err) => {
+					console.log(err)
+				})
+				
+			},
 			okclick(){
-				
-				
-				  
-				  
+
+				  //调起微信app支付
+				  // console.log(this.url)
 				  location.href=this.url
 				// uni.navigateTo({
 				//   url: `/pages/play/successpay`
@@ -169,10 +187,16 @@
       width: 446rpx;
       height: 80rpx;
       line-height: 80rpx;
-      background: #FFFFFF;
       text-align: center;
       opacity: 1;
       border-radius: 40rpx;
     }
+	.allowpay{
+		background:#2BA25D;
+	}
+	.notallowpay{
+		background:#FFFFFF;
+	}
+
 	}
 </style>

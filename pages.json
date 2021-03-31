@@ -1,5 +1,6 @@
 {
 	"pages": [
+		
 		{
 		  "path": "pages/account/registered/registered",
 		  "style": {
@@ -30,6 +31,7 @@
 				"navigationBarTitleText": "支付成功"
 			}
 		}
+		
     ],
 	"tabBar": {
 		"color": "#C7D0E2",

@@ -10,6 +10,14 @@ export const weixinPay = (data) => {
       isLoading: true
 	})
 }
+//获取订单信息
+export const getTradeOrderDetails = (data) => {
+	return http.request({
+	    url: `${baseUrl}/getTradeOrderDetails`,
+	    method: 'GET',
+	    data,
+	})
+}
 // 发送验证码
 export const sendPhoneCode = (data) => {
   return http.request({
