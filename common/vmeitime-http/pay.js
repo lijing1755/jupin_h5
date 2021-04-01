@@ -19,10 +19,10 @@ export const getTradeOrderDetails = (data) => {
 	})
 }
 // 发送验证码
-export const sendPhoneCode = (data) => {
+export const payTrade = (data) => {
   return http.request({
-    url: `/index/wx_pay`,
-    method: 'GET',
+    url: `${baseUrl}/payTrade`,
+    method: 'POST',
     data,
   })
 }

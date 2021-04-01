@@ -3,5 +3,6 @@ const getters = {
 	token: state => state.user.token,
 	type:state => state.user.type,
 	order:state => state.user.order
+	
 }
 export default getters

@@ -1,27 +1,31 @@
 <template>
 	<view class="paycontent">
-		<view class="imgview">
+		<!-- <view class="imgview">
       <image class="logo" src="/static/image/okpic.png"></image>
     </view>
 		<view class="text-area">
 			<text class="title">{{text}}</text>
-		</view>
+		</view> -->
 		<!-- 内置浏览器返回方式 -->
     <!-- <view class="backview" @click="backApp">
       <text>返回巨拼APP</text>
     </view> -->
 	<!-- 外部浏览器返回方式 -->
-	<view class="backview"  @click="colse">
-	  <a :href='url'>返回巨拼APP</a>
-	  <!-- <a>{{url}}</a> -->
+	<view class="backview" >
+	  <a :href='url'>已完成支付</a>
 	</view>
+	<view class="backview" @click="back">
+	  <a >支付遇到问题，重新支付</a>
+	</view>
+	<a style='color: #FFF;'>{{res}}</a>
 	</view>
 </template>
 
 <script>
 	import {
 		weixinPay,
-		getTradeOrderDetails
+		getTradeOrderDetails,
+		payTrade
 	} from '@/common/vmeitime-http/pay.js' 
 	import store from '@/store/index.js'
 	import uniData from '@/components/uni.webview.1.5.2.js'
@@ -32,7 +36,8 @@
 				url:'jupin://',//jupin://pages/goods/pages/confirm-order/submit-success?price=999
 				type:0,
 				order:{},
-				text:'支付成功'
+				text:'支付成功',
+				res:null
 			}
 		},
 		onLoad(option) {
@@ -44,7 +49,8 @@
 			if(this.type == 4){//返回订单列表页
 				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
 			}else{
-				this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
+				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
+				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
 			}
 			// this.getOrderDetail()
 			console.log(this.url)
@@ -52,15 +58,7 @@
 		colse(){
 			location.url = '/'
 		},
-		onBackPress(e) {
-			alert('返回')
-			if(e.from==="backbutton") {
-				if (uni.getStorageSync('isLowAccount')) {
-					console.log('返回')
-					return true
-				}
-			}
-		},
+		
 		methods: {
 			getOrderDetail(){
 				let that = this
@@ -76,11 +74,29 @@
 				})
 				
 			},
+			
+			back(){
+				let that = this
+				console.log('订单')
+				console.log(that.order)
+				payTrade({
+					order_id:that.order.trade.order_id,
+					client_type:'wx_h5'
+				}).then(res => {
+				  console.log(res)
+				  location.href =JSON.parse(res.data.jsApiParameters).mweb_url
+
+				}).catch((err) => {
+					console.log(err)
+				})
+					
+					
+					// location.href = `https://phptest.tatakeji.cn/jupin/front/pages/play/weChatpay`
+				
+			},
 			backApp(){
 				console.log('触发返回')
-				// uni.webView.redirectTo({
-				// 	url:'/pages/goods/pages/confirm-order/submit-success'
-				// })
+				
 				
 			}
 		}
@@ -93,6 +109,10 @@
     height: 100vh;
     width: 100vw;    
     border-top: 1px solid #1A1622;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
     .imgview{
       width: 140rpx;
       height:140rpx;
@@ -115,7 +135,7 @@
       width: 446rpx;
       background: white;
       text-align: center;
-      margin: 30% auto 0;
+      margin: 40rpx auto 0;
 	  a{
 		  color: #000000;
 		  text-decoration:none;

@@ -50,7 +50,8 @@
 				showpay:false,//订单是否已经支付
 				order:{},
 				hour:null,
-				money:null
+				money:null,
+				time:240
 				
 			}
 		},
@@ -58,10 +59,7 @@
 			
 		},
 		onLoad(option) {
-			
-			console.log('token')
-			console.log(option)
-			console.log(option.type)
+
 			let url = decodeURI(option.option+'&package='+option.package+'&redirect_url='+option.redirect_url)
 			this.order_id = option.orderId
 			this.$store.commit('SET_TYPE',option.type)
@@ -72,12 +70,17 @@
 			this.url = url
 			
 			// let that = this
-			this.getOrderDetail()
+			
 			
 		},
-		
+		onShow(){
+			this.getOrderDetail()
+		},
 		methods: {
-			
+			end(){
+				this.showpay = true
+				this.time = 0
+			},
 			getOrderDetail(){
 				let that = this
 				getTradeOrderDetails({
@@ -88,14 +91,31 @@
 					that.order.money = that.money
 					that.order.hour = that.hour
 					this.$store.commit('SET_ORDER', that.order)
-					console.log(that.order)
+					console.log(res.data.trade.status_name)
+					if(res.data.trade.status_name!='待付款'){//订单已支付，倒计时归零，按钮变灰
+						this.showpay = true
+						this.time = 0
+					}
 				}).catch((err) => {
 					console.log(err)
 				})
 				
 			},
 			okclick(){
-
+				if(this.time == 0){
+					uni.showToast({
+						title:'支付超时，请返回巨拼重新发起支付',
+						icon:'none'
+					})
+					return
+				}
+				if(this.order.trade.status_name!='待付款'){
+					uni.showToast({
+						title:'订单已支付',
+						icon:'none'
+					})
+					return
+				}
 				  //调起微信app支付
 				  // console.log(this.url)
 				  location.href=this.url

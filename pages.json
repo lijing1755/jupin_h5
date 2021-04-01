@@ -18,8 +18,7 @@
             "style" : {
 				"navigationBarTitleText": "用户协议"
 			}
-        },
-		{
+        },{
 		    "path" : "pages/play/weChatpay",
 		    "style" : {
 				"navigationBarTitleText": "支付"
@@ -28,9 +27,11 @@
 		{
 		    "path" : "pages/play/successpay",
 		    "style" : {
-				"navigationBarTitleText": "支付成功"
+				"navigationBarTitleText": ""
 			}
-		}
+		},
+		
+		
 		
     ],
 	"tabBar": {

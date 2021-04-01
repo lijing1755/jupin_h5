@@ -6,7 +6,8 @@ const user = {
     merchantInfo: uni.getStorageSync('merchantInfo') || {},//默认为0
     token: uni.getStorageSync('token') || null,
 	type:0,
-	order:uni.getStorageSync('order') || null
+	order:uni.getStorageSync('order') || null,
+	pay:uni.getStorageSync("pay")||null
   },
 
   mutations: {
@@ -25,7 +26,7 @@ const user = {
 	SET_ORDER: (state, order) => {
 	  uni.setStorageSync('order', order)
 	  state.order = order
-	},
+	}
   },
 
   actions: {

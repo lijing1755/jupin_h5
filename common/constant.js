@@ -30,7 +30,7 @@ const build = {
 	imageStaticUrl: '/lekebaba/public/static/images'
 };
 // const config = process.env.NODE_ENV === 'development' ? dev : build;
-const config = dev;
+const config = build;
 // const baseURL =process.env.NODE_ENV === 'development' ? dev.baseURL: build.baseURL
 // const baseURL = config.baseURL
 // const imageBaseUrl =process.env.NODE_ENV === 'development' ? 'https://wechat3.walkerbang.com': 'https://jupinshop.oss-cn-shenzhen.aliyuncs.com'
