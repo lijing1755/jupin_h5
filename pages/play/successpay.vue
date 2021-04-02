@@ -1,11 +1,8 @@
 <template>
 	<view class="paycontent">
-		<!-- <view class="imgview">
-      <image class="logo" src="/static/image/okpic.png"></image>
-    </view>
-		<view class="text-area">
-			<text class="title">{{text}}</text>
-		</view> -->
+		<view class="paysuccess">
+			<image class="payimg" src="../../static/image/paysuccess.png" mode="widthFix"></image>
+		</view>	
 		<!-- 内置浏览器返回方式 -->
     <view class="backview" @click="backApp">
       <text>返回巨拼APP</text>
@@ -19,8 +16,8 @@
 	</view>
 	<view class="backview" @click="back">
 	  <a >支付遇到问题，重新支付</a>
-	</view>
 	</view> -->
+	</view>
 </template>
 
 <script>
@@ -43,19 +40,19 @@
 			}
 		},
 		onLoad(option) {
-			this.type = store.getters.type
-			this.order = store.getters.order
-			let order = this.order
-			console.log(this.order.order_id)
-			console.log(this.type)
-			if(this.type == 4){//返回订单列表页
-				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
-			}else{
-				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
-				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
-			}
-			this.getOrderDetail()
-			console.log('支付支付')
+			// this.type = store.getters.type
+			// this.order = store.getters.order
+			// let order = this.order
+			// console.log(this.order.order_id)
+			// console.log(this.type)
+			// if(this.type == 4){//返回订单列表页
+			// 	this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
+			// }else{
+			// 	// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
+			// 	this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
+			// }
+			// this.getOrderDetail()
+			// console.log('支付支付')
 		},
 		colse(){
 			location.url = '/'
@@ -129,6 +126,17 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	
+	.paysuccess{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 100rpx;
+		.payimg{
+			width: 70%;
+		}
+	}
     .imgview{
       width: 140rpx;
       height:140rpx;
