@@ -7,18 +7,20 @@
 			<text class="title">{{text}}</text>
 		</view> -->
 		<!-- 内置浏览器返回方式 -->
-    <!-- <view class="backview" @click="backApp">
+    <view class="backview" @click="backApp">
       <text>返回巨拼APP</text>
-    </view> -->
+    </view>
+	<view class="backview" @click="back">
+	  <text>支付遇到问题，重新支付</text>
+	</view>
 	<!-- 外部浏览器返回方式 -->
-	<view class="backview" >
+	<!-- <view class="backview" >
 	  <a :href='url'>已完成支付</a>
 	</view>
 	<view class="backview" @click="back">
 	  <a >支付遇到问题，重新支付</a>
 	</view>
-	<a style='color: #FFF;'>{{res}}</a>
-	</view>
+	</view> -->
 </template>
 
 <script>
@@ -44,7 +46,7 @@
 			this.type = store.getters.type
 			this.order = store.getters.order
 			let order = this.order
-			console.log(this.order)
+			console.log(this.order.order_id)
 			console.log(this.type)
 			if(this.type == 4){//返回订单列表页
 				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
@@ -52,20 +54,24 @@
 				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
 				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
 			}
-			// this.getOrderDetail()
-			console.log(this.url)
+			this.getOrderDetail()
+			console.log('支付支付')
 		},
 		colse(){
 			location.url = '/'
 		},
-		
+		onBackPress(e){
+			// uni.webView.navigateBack({
+			// 	url:'/pages/goods/pages/detail/detail?id=${tradeOrder}&'
+			// })
+		},
 		methods: {
 			getOrderDetail(){
 				let that = this
 				getTradeOrderDetails({
-					order_id:that.order.order_id
+					order_id:that.order.trade.order_id
 				}).then(res => {
-				  console.log(res)
+				  console.log(JSON.stringify(res))
 					if(res.data.trade.status_name=='待付款'){
 						that.text = '订单待支付'
 					}
@@ -96,9 +102,19 @@
 			},
 			backApp(){
 				console.log('触发返回')
+				let url = ''
+				if(this.type == 4){//返回订单列表页
+					url = '/pages/me/pages/my-order/my-order?tabIndex=1'
+				}else{
+					// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
+					url = '/pages/me/pages/my-order/my-order?tabIndex=0'
+				}
+				uni.webView.redirectTo({//跳转至订单列表页
+					url:url
+				})
 				
-				
-			}
+			}	
+			
 		}
 	}
 </script>

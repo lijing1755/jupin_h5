@@ -27,9 +27,9 @@
 		{
 		    "path" : "pages/play/successpay",
 		    "style" : {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "支付"
 			}
-		},
+		}
 		
 		
 		
