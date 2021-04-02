@@ -5,7 +5,7 @@
 		</view>	
 		<!-- 内置浏览器返回方式 -->
     <view class="backview" @click="backApp">
-      <text>返回巨拼APP</text>
+      <text>已完成支付</text>
     </view>
 	<view class="backview" @click="back">
 	  <text>支付遇到问题，重新支付</text>
