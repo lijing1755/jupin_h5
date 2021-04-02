@@ -40,19 +40,19 @@
 			}
 		},
 		onLoad(option) {
-			// this.type = store.getters.type
-			// this.order = store.getters.order
-			// let order = this.order
-			// console.log(this.order.order_id)
-			// console.log(this.type)
-			// if(this.type == 4){//返回订单列表页
-			// 	this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
-			// }else{
-			// 	// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
-			// 	this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
-			// }
-			// this.getOrderDetail()
-			// console.log('支付支付')
+			this.type = store.getters.type
+			this.order = store.getters.order
+			let order = this.order
+			console.log(this.order.order_id)
+			console.log(this.type)
+			if(this.type == 4){//返回订单列表页
+				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
+			}else{
+				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
+				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
+			}
+			this.getOrderDetail()
+			console.log('支付支付')
 		},
 		colse(){
 			location.url = '/'
