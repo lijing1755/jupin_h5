@@ -1,18 +1,29 @@
 <template>
-	<view class="paycontent">
-		<view class="paysuccess">
-			<image class="payimg" src="../../static/image/paysuccess.png" mode="widthFix"></image>
-		</view>	
-		<!-- 内置浏览器返回方式 -->
-    <view class="backview" @click="backApp">
-      <text>已完成支付</text>
-    </view>
-	<view class="backview" @click="back">
-	  <text>支付遇到问题，重新支付</text>
-	</view>
+	
+	<view class="">
+		<view v-else class="paycontent"  v-if="phonetext=='Safari'">
+			<view class="backview">
+				<a :href='url'>返回巨拼APP</a>
+			</view>
+
+		</view>
+		<view v-else class="paycontent" >
+			<view class="paysuccess">
+				<image class="payimg" src="../../static/image/paysuccess.png" mode="widthFix"></image>
+			</view>	
+			<!-- 内置浏览器返回方式 -->
+			<view class="backview" @click="backApp">
+			  <text v-if="phone=='Android'">已完成支付</text>
+			  <a v-if="phone=='ios'" :href='url'>已完成支付</a>
+			</view>
+			<view class="backview" @click="back">
+			  <text>支付遇到问题，重新支付</text>
+			</view>
+		</view>
+	
 	<!-- 外部浏览器返回方式 -->
 	<!-- <view class="backview" >
-	  <a :href='url'>已完成支付</a>
+	  
 	</view>
 	<view class="backview" @click="back">
 	  <a >支付遇到问题，重新支付</a>
@@ -36,7 +47,9 @@
 				type:0,
 				order:{},
 				text:'支付成功',
-				res:null
+				res:null,
+				phone:'Android',
+				phonetext:'qq'
 			}
 		},
 		onLoad(option) {
@@ -45,13 +58,13 @@
 			let order = this.order
 			console.log(this.order.order_id)
 			console.log(this.type)
-			if(this.type == 4){//返回订单列表页
-				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=1'
-			}else{
+			
 				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
-				this.url = this.url +'pages/me/pages/my-order/my-order?tabIndex=0'
-			}
+			this.url = this.url +'pages/me/pages/my-order/webPay'
+			
 			this.getOrderDetail()
+			this.getPhone()
+			this.getBrowsers()
 			console.log('支付支付')
 		},
 		colse(){
@@ -63,6 +76,39 @@
 			// })
 		},
 		methods: {
+			getBrowsers(){
+				// this.getBrow();
+				var u = navigator.userAgent.toLocaleLowerCase();
+				// this.phonetext = u
+				if (u.indexOf("safari") > -1 && u.indexOf('iphone') > -1) {
+					this.phonetext =  "Safari";
+				}
+				
+			},
+
+			getPhone(){
+				let that =this
+				 switch(uni.getSystemInfoSync().platform){
+				    case 'android':
+				
+				       console.log('运行Android上')
+				
+				       break;
+				
+				    case 'ios':
+				
+				      that.phone = 'ios'
+				
+				       break;
+				
+				    default:
+				
+				       console.log('运行在开发者工具上')
+				
+				       break;
+				
+				}
+			},
 			getOrderDetail(){
 				let that = this
 				getTradeOrderDetails({

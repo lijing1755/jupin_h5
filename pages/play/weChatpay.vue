@@ -118,7 +118,27 @@
 				}
 				  //调起微信app支付
 				  // console.log(this.url)
-				  location.href=this.url
+				   location.href=this.url
+				   switch(uni.getSystemInfoSync().platform){
+				       case 'android':
+				   
+				          console.log('运行Android上')
+				   
+				          break;
+				   
+				       case 'ios':
+				   
+				         console.log('运行ios上')
+				   
+				          break;
+				   
+				       default:
+				   
+				          console.log('运行在开发者工具上')
+				   
+				          break;
+				   
+				   }
 				// uni.navigateTo({
 				//   url: `/pages/play/successpay`
 				// });
