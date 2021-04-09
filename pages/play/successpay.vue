@@ -16,7 +16,7 @@
 			  <text v-if="phone=='Android'">已完成支付</text>
 			  <a v-if="phone=='ios'" :href='url'>已完成支付</a>
 			</view>
-			<view class="backview" @click="back">
+			<view class="backview notice" @click="back">
 			  <text>支付遇到问题，重新支付</text>
 			</view>
 		</view>
@@ -164,10 +164,8 @@
 
 <style lang="scss" scoped>
 	.paycontent{
-    background: #1A1622;
     height: 100vh;
-    width: 100vw;    
-    border-top: 1px solid #1A1622;
+    width: 100vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -198,12 +196,12 @@
       margin-top: 40rpx;
     }
     .backview{
-      color: #333333;
+      color: #fff;
+	  background-color: #FF7403;
       height: 80rpx;
       line-height: 80rpx;
       border-radius: 50rpx;
       width: 446rpx;
-      background: white;
       text-align: center;
       margin: 40rpx auto 0;
 	  a{
@@ -211,5 +209,10 @@
 		  text-decoration:none;
 	  }
     }
+	.notice{
+		background-color: #fff;
+		color: #FF7403;
+		border: 2rpx solid #FF7403;
+	}
   }
 </style>

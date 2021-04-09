@@ -14,6 +14,14 @@
 
 /* 颜色变量 */
 @import 'uview-ui/theme.scss';
+
+$theme-line-color: #EFEEEE; //分割线颜色
+
+$theme-main-color: #4d4d4d; //标题主颜色
+$theme-text-orange: #FF7403; //橙色字体
+
+$theme-gradient-btn: linear-gradient(to right, #FF7403, #EF2C16); 
+
 /* 行为相关颜色 */
 $uni-color-primary: #007aff;
 $uni-color-success: #4cd964;

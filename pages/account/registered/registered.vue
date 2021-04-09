@@ -226,7 +226,7 @@
 		left: 50%;
 		transform: translate(-50%);
 		font-size: 26rpx;
-		color: #E8E8E9;
+		color: $theme-main-color;
 		display: flex;
 		align-items: center;
 		image{
@@ -302,15 +302,15 @@
 		transform: translate(-50%);
 
 		.btn1 {
-			width: 360rpx;
-			height: 70rpx;
-			background-color: #fff;
+			width: 466rpx;
+			height: 80rpx;
+			background-image:$theme-gradient-btn;
 			border-radius: 100rpx;
-			color: #333333;
+			color: #fff;
 			font-size: 28rpx;
 			font-weight: bold;
 			text-align: center;
-			line-height: 70rpx;
+			line-height: 80rpx;
 			margin-top: 30rpx;
 			display: flex;
 			align-items: center;
@@ -324,13 +324,14 @@
 	}
 
 	.content {
-		padding: 40rpx 25rpx 0 32rpx;
-
+		background-color: #fff;
+		margin-top: 40rpx;
+		padding: 0rpx 48rpx 30rpx;
 		.content_list {
 			display: flex;
 			align-items: center;
-			margin-bottom: 24rpx;
-
+			border-bottom: 2rpx solid $theme-line-color;
+			padding: 30rpx 0;
 			.name {
 				width: 120rpx;
 				text-align: right;
@@ -339,7 +340,6 @@
 
 			.ipt {
 				flex: 1;
-				background-color: #31313B;
 				border-radius: 10rpx;
 				height: 70rpx;
 				padding: 14rpx 18rpx;
@@ -350,9 +350,8 @@
 				.code {
 					min-width: 150rpx;
 					padding: 10rpx 13rpx;
-					background-color: #666666;
 					border-radius: 100rpx;
-					color: #fff;
+					color: $theme-text-orange;
 					font-size: 26rpx;
 					text-align: center;
 

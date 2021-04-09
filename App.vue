@@ -40,8 +40,9 @@ export default {
 }
 /* #endif */
 page {
-  background-color: #1A1622;
-  color: #E8E8E9;
+  background-color: #F7F9FC;
+  color: $theme-main-color;
   font-size: 30rpx;
 }
+
 </style>

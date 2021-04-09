@@ -28,7 +28,7 @@
         <view>￥{{order.trade.total_amount}}</view>
       </view>
     </view>
-    <view class="waitpay">待付费<u-count-down @end="end" timestamp="240" :show-hours="false" bg-color="#1A1622"
+    <view class="waitpay">待付费<u-count-down @end="end" timestamp="240" :show-hours="false" bg-color=""
 					 color="#FF7403" font-size="30rpx" separator-color="#FF7403" separator-size="24rpx"></u-count-down></view>
     <view class="moneypay" :class="[showpay?'notallowpay':'allowpay']" @click="okclick()">微信支付 ( ${{order.trade.order_amount}} )</view>
 	
@@ -149,10 +149,8 @@
 
 <style lang="scss" scoped>
 	.wechatcontent {
-    background: #1A1622;
     height: 100vh;
     width: 100vw;    
-    border-top: 1px solid #1A1622;
     .imgview{
       width: 140rpx;
       height:140rpx;
@@ -164,7 +162,7 @@
     }
     .peopledata{
       width: 700rpx;
-      background: #31313B;
+      background: #fff;
       box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
       border-radius: 10rpx;
       margin: 0 auto;
@@ -175,19 +173,19 @@
       }
       &>view:nth-child(1){
         display: flex;
-        color: #E8E8E9;
+        color:$theme-main-color;
         &>view:nth-child(1){
           flex: 1;
           margin-bottom: 20rpx;
         }
       }
       &>view:nth-child(2){
-          color: #999999;
+          color: #90949E;
         }
     }
     .bottomtent{
       width: 700rpx;
-      background: #31313B;
+      background: #fff;
       box-shadow: 0px 10px 20px rgba(79, 98, 122, 0.05);
       border-radius: 10rpx;
       margin: 30rpx auto;
@@ -200,15 +198,15 @@
         font-size: 28rpx;
         &>view:nth-child(1){
           flex: 1;
-          color: #E8E8E9;
+          color: $theme-main-color;
         }
         &>view:nth-child(2){
-          color: #999999;
+          color: #90949E;
         }
       }
       &>view:last-child{
         margin-bottom: 1rpx;
-        border-top: 2px solid #66667A;
+        border-top: 2rpx solid $theme-line-color;
         padding-top: 20rpx;
         &>view:nth-child(2){
           color: #FFFFFF;
@@ -218,7 +216,7 @@
     .waitpay{
       text-align: center;
       font-size: 30rpx;
-      color: #FF7403;
+      color: #FF2020;
       margin-top: 100rpx;
       margin-bottom: 20rpx;
     }
@@ -232,10 +230,11 @@
       border-radius: 40rpx;
     }
 	.allowpay{
-		background:#2BA25D;
+		background:#FF7403;
+		color: #fff;
 	}
 	.notallowpay{
-		background:#FFFFFF;
+		background:#CCCCCC;
 	}
 
 	}

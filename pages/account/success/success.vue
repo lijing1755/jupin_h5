@@ -95,6 +95,9 @@
 </script>
 
 <style lang="scss" scoped>
+	page{
+		background-color: #fff;
+	}
 .success{
 	display: flex;
 	flex-direction: column;
@@ -115,15 +118,15 @@
 		left: 50%;
 		transform: translate(-50%,0);
 		.btn1 {
-			width: 360rpx;
-			height: 70rpx;
-			background-color: #fff;
+			width: 446rpx;
+			height: 80rpx;
+			background-image: $theme-gradient-btn;
 			border-radius: 100rpx;
-			color: #333333;
+			color: #fff;
 			font-size: 28rpx;
 			font-weight: bold;
 			text-align: center;
-			line-height: 70rpx;
+			line-height: 80rpx;
 			margin-top: 30rpx;
 			display: flex;
 			align-items: center;
@@ -150,36 +153,37 @@
 		min-height: 100vh;
 		background-color: rgba(0,0,0,0.7);
 		position: fixed;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		top: 0;
 		left: 0;
 		.module_info{
 			width: 490rpx;
 			// height: 450rpx;
-			background-color: #31313B;
-			border-radius: 16rpx;
+			background-color: #fff;
+			border-radius: 20rpx;
 			margin: 300rpx auto;
 			text-align: center;
 			padding: 0 50rpx 30rpx;
 			.title{
 				padding: 40rpx 0 16rpx 0;
 				font-size: 38rpx;
-				color: #fff;
+				color:$theme-main-color;
 			}
 			.http_info{
 				width: 100%;
 				word-wrap: break-word;
-				color: #E8E8E9;
+				color: $theme-main-color;
 				font-size: 26rpx;
 			}
 			.info{
 				width: 100%;
-				height: 150rpx;
 				border-radius: 10rpx;
-				background-color: #3A3A3C;
 				word-wrap: break-word;
 				padding: 9rpx 14rpx;
 				overflow: auto;
-				color: #E8E8E9;
+				color: #90949E;
 				font-size: 24rpx;
 				margin: 17rpx 0 30rpx 0;
 				text-align: initial;
@@ -188,8 +192,8 @@
 				width: 100%;
 				height: 70rpx;
 				border-radius: 200rpx;
-				background-color: #666666;
-				color: #E8E8E9;
+				background-color: $theme-text-orange;
+				color: #fff;
 				font-size: 26rpx;
 				line-height: 70rpx;
 			}
