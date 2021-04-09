@@ -49,9 +49,11 @@
     },
     "h5" : {
         "router" : {
-            "base" : "./"
+            "base" : ""
         },
-        "domain" : "https://jupin.lekebaba.cn"
+        "domain" : "https://jupin.lekebaba.cn",
+        "devServer" : {
+            "https" : false
+        }
     }
-	
 }

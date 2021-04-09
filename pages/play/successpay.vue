@@ -205,7 +205,7 @@
       text-align: center;
       margin: 40rpx auto 0;
 	  a{
-		  color: #000000;
+		  color: #fff;
 		  text-decoration:none;
 	  }
     }
