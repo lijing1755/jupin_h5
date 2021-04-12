@@ -1,7 +1,8 @@
 <template>
 	
 	<view class="">
-		<view v-else class="paycontent"  v-if="phonetext=='Safari'">
+		<!-- <text style="color: #333;">我的{{phonetexts}}</text> -->
+		<view v-else class="paycontent"  v-if="phonetext">
 			<view class="backview">
 				<a :href='url'>返回巨拼APP</a>
 			</view>
@@ -49,10 +50,13 @@
 				text:'支付成功',
 				res:null,
 				phone:'Android',
-				phonetext:'qq'
+				phonetext:false,
+				phonetexts:''
 			}
 		},
 		onLoad(option) {
+			this.getBrowsers()
+			this.getPhone()
 			this.type = store.getters.type
 			this.order = store.getters.order
 			let order = this.order
@@ -60,11 +64,10 @@
 			console.log(this.type)
 			
 				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
-			this.url = this.url +'pages/me/pages/my-order/webPay'
+			this.url = this.url +'pages/me/pages/my-order/my-order'
 			
 			this.getOrderDetail()
-			this.getPhone()
-			this.getBrowsers()
+			
 			console.log('支付支付')
 		},
 		colse(){
@@ -79,13 +82,13 @@
 			getBrowsers(){
 				// this.getBrow();
 				var u = navigator.userAgent.toLocaleLowerCase();
-				// this.phonetext = u
+				this.phonetexts = u
+				console.log(this.phonetexts)
 				if (u.indexOf("safari") > -1 && u.indexOf('iphone') > -1) {
 					this.phonetext =  "Safari";
 				}
 				
 			},
-
 			getPhone(){
 				let that =this
 				 switch(uni.getSystemInfoSync().platform){
