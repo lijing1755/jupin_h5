@@ -64,7 +64,7 @@
 			console.log(this.type)
 			
 				// this.url = this.url +`pages/goods/pages/confirm-order/submit-success?orderId=${order.trade.order_id}&price=${order.trade.total_amount}&name=${order.tradeOrder.goods_name}&img=${order.tradeOrder.goods_img}&type=${order.trade.order_type}&hour=${order.hour}&money=${order.money}&id=${order.tradeOrder.goods_id}&shareTitle=${order.setting.share_title}`
-			this.url = this.url +'pages/me/pages/my-order/my-order'
+			// this.url = this.url
 			
 			this.getOrderDetail()
 			
