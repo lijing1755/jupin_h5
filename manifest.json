@@ -2,8 +2,8 @@
     "name" : "jupin",
     "appid" : "",
     "description" : "",
-    "versionName" : "1.1.1",
-    "versionCode" : 111,
+    "versionName" : "1.0.0",
+    "versionCode" : "100",
     "transformPx" : false,
     "app-plus" : {
         "nvueCompiler" : "uni-app",
