@@ -1,7 +1,7 @@
 <template>
 	
 	<view class="">
-		<!-- <text style="color: #333;">我的{{phonetexts}}</text> -->
+		<text style="color: #333;">{{err}}</text>
 		<view v-else class="paycontent"  v-if="phonetext">
 			<view class="backview">
 				<a :href='url'>返回巨拼APP</a>
@@ -51,7 +51,8 @@
 				res:null,
 				phone:'Android',
 				phonetext:false,
-				phonetexts:''
+				phonetexts:'',
+				err:''
 			}
 		},
 		onLoad(option) {
@@ -136,6 +137,7 @@
 					client_type:'wx_h5'
 				}).then(res => {
 				  console.log(res)
+				  this.err = res
 				  location.href =JSON.parse(res.data.jsApiParameters).mweb_url
 
 				}).catch((err) => {

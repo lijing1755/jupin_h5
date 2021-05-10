@@ -30,7 +30,7 @@
     </view>
     <view class="waitpay">待付费<u-count-down @end="end" timestamp="240" :show-hours="false" bg-color=""
 					 color="#FF7403" font-size="30rpx" separator-color="#FF7403" separator-size="24rpx"></u-count-down></view>
-    <view class="moneypay" :class="[showpay?'notallowpay':'allowpay']" @click="okclick()">微信支付( ${{order.trade.order_amount}} )</view>
+    <view class="moneypay" :class="[showpay?'notallowpay':'allowpay']" @click="okclick()">微信支付(￥{{order.trade.order_amount}} )</view>
 	
 	</view>
 </template>
