@@ -1,7 +1,7 @@
 <template>
 	
 	<view class="">
-		<text style="color: #333;">{{err}}</text>
+		<!-- <text style="color: #333;">{{err}}</text> -->
 		<view v-else class="paycontent"  v-if="phonetext">
 			<view class="backview">
 				<a :href='url'>返回巨拼APP</a>

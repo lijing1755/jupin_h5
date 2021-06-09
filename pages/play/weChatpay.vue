@@ -51,7 +51,8 @@
 				order:{},
 				hour:null,
 				money:null,
-				time:240
+				time:240,
+				text:''
 				
 			}
 		},
@@ -66,7 +67,7 @@
 			this.$store.commit('SET_TOKEN', option.token)
 			this.hour = option.hour
 			this.money = option.money
-			
+			this.time = 240
 			this.url = url
 			
 			// let that = this
@@ -91,6 +92,7 @@
 					that.order.money = that.money
 					that.order.hour = that.hour
 					this.$store.commit('SET_ORDER', that.order)
+					this.text = res.data.trade.status_name
 					console.log(res.data.trade.status_name)
 					if(res.data.trade.status_name!='待付款'){//订单已支付，倒计时归零，按钮变灰
 						this.showpay = true
