@@ -12,7 +12,13 @@
             "style" : {
 				"navigationBarTitleText": "注册成功"
 			}
-        }
+        },
+		{
+		  "path": "pages/account/registered/privacy/privacy",
+		  "style": {
+		    "navigationBarTitleText": "注册"
+		  }
+		}
         ,{
             "path" : "pages/account/registered/quil/quil",
             "style" : {
